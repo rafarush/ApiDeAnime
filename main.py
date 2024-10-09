@@ -1,4 +1,23 @@
+import requests
+import os
 from animeflv import AnimeFLV
+
+"""
+def descargar_archivo(url):
+    # Obtener el nombre del archivo de la URL
+    nombre_archivo = url.split("/")[-1]
+    # Realizar la solicitud GET
+    respuesta = requests.get(url, stream=True)
+
+    if respuesta.status_code == 200:
+        # Guardar el archivo en modo binario
+        with open(nombre_archivo, 'wb') as f:
+            for chunk in respuesta.iter_content(chunk_size=8192):
+                f.write(chunk)
+        print(f"Video '{nombre_archivo}' descargado exitosamente.")
+    else:
+        print(f"Error al descargar el video: {respuesta.status_code}")
+"""
 
 
 with AnimeFLV() as api:
@@ -24,6 +43,24 @@ with AnimeFLV() as api:
 
         for result in results:
             print(f"{result.server} - {result.url}")
+
+        
+        """
+        option = int(input("Si desea descargar el episodio escriba 1: "))
+        if option == 1:
+            for k, result in enumerate(results):
+                print(f"{k} - {result.server}")
+
+            serverSelect = int(input("Seleccione un servidor:"))
+            descargar_archivo(results[serverSelect].url)
+        """
+        
+
+
+
     except Exception as e:
         print(e)
+print()        
 input("Presione tecla para salir")
+
+
